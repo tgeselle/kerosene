@@ -29,7 +29,7 @@ defmodule Kerosene do
     total_count = get_total_count(opts[:total_count], repo, query)
     total_pages = get_total_pages(total_count, per_page)
     page = get_page(opts, total_pages)
-    offset = opts[:offset]
+    offset = get_offset(total_count, page) * per_page
 
     kerosene = %Kerosene {
       per_page: per_page,
